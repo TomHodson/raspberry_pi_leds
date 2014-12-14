@@ -9,7 +9,7 @@ parser.add_argument("--flash", '-f', help ='square wave (Hz)',
 parser.add_argument("--pulse", '-p', help ='sine wave (Hz)',
                     type=float)
 parser.add_argument("--resolution", '-r', help ='updates per second',
-                    default = 20.0, type=float)
+                    default = 30.0, type=float)
 
 args = parser.parse_args()
 
