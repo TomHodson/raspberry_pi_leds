@@ -11,3 +11,6 @@ options
 - specifiy colours by component or name ie "--colour 20,40,0" or "--colour red"
 - flash led at 2 Hz "--flash 2"
 - pulse (sine wave) "--pulse 2"
+
+![open](open.jpg?raw=true)
+![closed](cosed.jpg?raw=true)
