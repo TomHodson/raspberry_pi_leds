@@ -6,7 +6,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--colour", '-c', help ='integer 0-255 r,g,b', default="10,40,0")
 parser.add_argument("--resolution", '-r', help ='updates per second',
                     default = 30.0, type=float)
-parser.add_argument("--number", '-n', help='number of leds', default = 1, type=int)
+parser.add_argument("--number", '-n', help='number of leds', default = 50, type=int)
 parser.add_argument("--dryrun", help='do not try access the spi device (for testing)', action="store_true")
 
 modes = parser.add_mutually_exclusive_group()
@@ -36,7 +36,7 @@ def set_led(colours):
     if args.dryrun:
         print "set leds to {}".format(colours)
     else:
-        spi.write("".join(chr(int(i)) for i in colour for colour in colours))
+        spi.write("".join(chr(int(i)) for colour in colours for i in colour))
         spi.flush()
 
 def get_spi_device():
@@ -52,7 +52,7 @@ with get_spi_device() as spi:
     colours = [[int(cie1931(float(c))) for c in colour.split(',')] for _ in range(args.number or 1)]
     set_led(colours)
     while args.flash:
-        set_led(off)
+        set_led(off for _ in range(args.number or 1))
         sleep(1.0/args.flash)
         set_led(colours)
         sleep(1.0/args.flash)
