@@ -20,7 +20,7 @@ modes.add_argument("--phasor", help='moving wavefront',
 args = parser.parse_args()
 
 off = [0,0,0]
-colours = {'orange': '80,40,0', 'red':'80,0,0', 'green':'10,40,0', 'blue':'0,0,80', 'white':'40,40,40'}
+colour_map = {'orange': '80,40,0', 'red':'80,0,0', 'green':'10,40,0', 'blue':'0,0,80', 'white':'40,40,40'}
 
 def cie1931(L):
     L = L*100.0/255.0
@@ -48,7 +48,7 @@ def get_spi_device():
 
 with get_spi_device() as spi:
 #if True:
-    colour = colours.get(args.colour, args.colour)
+    colour = colour_map.get(args.colour, args.colour)
     colours = [[int(cie1931(float(c))) for c in colour.split(',')] for _ in range(args.number or 1)]
     set_led(colours)
     while args.flash:
