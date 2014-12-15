@@ -13,4 +13,4 @@ options
 - pulse (sine wave) "--pulse 2"
 
 ![open](open.jpg?raw=true)
-![closed](cosed.jpg?raw=true)
+![closed](cosed2.jpg?raw=true)
